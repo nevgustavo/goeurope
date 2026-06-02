@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Europe – Consultoria Educacional</title>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#fffbe8;
+  --blue:#004aad;
+  --red:#d12e2e;
+  --white:#ffffff;
+  --gray:#b4b4b4;
+  --black:#000000;
+  --dark:#221712;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+h1,h2,h3,h4,nav,.stat-num{font-family:'League Spartan',sans-serif}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,251,232,0.97);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(0,74,173,0.1);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6%;height:68px;
+}
+.logo{font-family:'League Spartan',sans-serif;font-weight:900;font-size:1.6rem;color:var(--blue);letter-spacing:-1px;text-decoration:none}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{text-decoration:none;font-size:.8rem;font-weight:600;color:var(--dark);letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{
+  background:var(--blue);color:var(--white);padding:.55rem 1.6rem;
+  font-family:'League Spartan',sans-serif;font-weight:700;font-size:.8rem;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  border-radius:2px;transition:background .2s;
+}
+.nav-cta:hover{background:#003a8a}
+
+/* HERO */
+.hero{
+  min-height:100vh;padding:68px 6% 0;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:5rem;
+  background:var(--cream);position:relative;overflow:hidden;
+}
+
+.hero::before{
+  content:'';position:absolute;top:-15%;right:-8%;
+  width:700px;height:700px;border-radius:50%;
+  background:rgba(0,74,173,0.04);pointer-events:none;
+}
+.hero-tag{
+  display:inline-block;font-family:'League Spartan',sans-serif;font-weight:700;
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--blue);border:1.5px solid var(--blue);padding:.3rem .9rem;
+  border-radius:2px;margin-bottom:1.5rem;
+}
+.hero h1{
+  font-size:clamp(3.2rem,5vw,5rem);font-weight:900;line-height:.92;
+  color:var(--dark);letter-spacing:-2.5px;margin-bottom:1.5rem;
+}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero h1 .accent{color:var(--red)}
+.hero-sub{font-size:1.05rem;color:#555;line-height:1.75;margin-bottom:2.5rem;max-width:480px;font-weight:400}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--blue);color:var(--white);padding:.9rem 2.2rem;
+  font-family:'League Spartan',sans-serif;font-weight:700;font-size:.85rem;
+  letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;
+  border-radius:2px;transition:all .2s;text-decoration:none;display:inline-block;
+}
+.btn-primary:hover{background:#003a8a;transform:translateY(-2px)}
+.btn-outline{
+  background:transparent;color:var(--dark);padding:.9rem 2.2rem;
+  font-family:'League Spartan',sans-serif;font-weight:700;font-size:.85rem;
+  letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--dark);
+  cursor:pointer;border-radius:2px;transition:all .2s;text-decoration:none;display:inline-block;
+}
+.btn-outline{border-color:var(--white);color:var(--white);}
+.btn-outline:hover{background:var(--white);color:var(--dark);}
+
+/* HERO VISUAL — sem imagens, 100% CSS */
+.hero-visual{position:relative;height:540px}
+.hv-main{
+  position:absolute;top:0;left:0;right:0;height:380px;
+  border-radius:4px;
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url(alex-ovs-UDyF0_Frxqs-unsplash.jpg) center/cover no-repeat;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem;
+  overflow:hidden;
+}
+
+.hv-main::before{
+  content:'48.1372° N';position:absolute;top:1.5rem;right:1.5rem;
+  font-family:'League Spartan',sans-serif;font-size:.7rem;letter-spacing:.15em;
+  color:rgba(255,255,255,.2);
+}
+.hv-main::after{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:280px;height:280px;border-radius:50%;
+  border:40px solid rgba(255,255,255,.04);
+}
+.hv-city{font-family:'League Spartan',sans-serif;font-weight:900;font-size:2.2rem;color:var(--white);letter-spacing:-1.5px;line-height:1}
+.hv-uni{font-size:.75rem;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;margin-top:.4rem}
+
+.hv-badge-red{
+  position:absolute;bottom:0;right:0;width:170px;height:140px;
+  background:linear-gradient(135deg,var(--red),#a02020);
+  border-radius:4px;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;
+}
+.hv-badge-red .hv-city{font-size:1.3rem}
+
+.hv-badge-cream{
+  position:absolute;bottom:50px;left:20px;width:130px;height:130px;
+  background:var(--cream);border:2px solid var(--blue);border-radius:4px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:1rem;
+}
+.badge-num{font-family:'League Spartan',sans-serif;font-weight:900;font-size:2rem;color:var(--blue);line-height:1}
+.badge-label{font-size:.65rem;color:var(--gray);letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem}
+
+/* STATS BAR */
+.stats-bar{
+  background:var(--blue);padding:3.5rem 6%;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;
+}
+.stat-item{text-align:center}
+.stat-num{font-size:3rem;font-weight:900;color:var(--white);letter-spacing:-2px;line-height:1}
+.stat-label{font-size:.72rem;color:rgba(255,255,255,.55);letter-spacing:.1em;text-transform:uppercase;margin-top:.5rem}
+
+/* SECTIONS */
+.section{
+  padding:7rem 6%;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('kai-pilger--uQBxh6L5D4-unsplash.jpg') center/cover no-repeat;
+}
+.section-tag{
+  font-family:'League Spartan',sans-serif;font-weight:700;font-size:.68rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:.8rem;
+  display:block;
+}
+.section-title{
+  font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;letter-spacing:-1.5px;
+  color:var(--dark);line-height:1.02;margin-bottom:1rem;
+}
+.section-subtitle{font-size:1rem;color:#666;max-width:560px;line-height:1.75}
+
+/* HOW */
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.how-card{
+  padding:2.5rem 2rem;border:1.5px solid rgba(0,74,173,0.1);
+  border-radius:4px;background:var(--white);position:relative;
+  transition:border-color .3s,box-shadow .3s;
+}
+.how-card:hover{border-color:var(--blue);box-shadow:0 6px 30px rgba(0,74,173,0.09)}
+.how-num{
+  font-family:'League Spartan',sans-serif;font-weight:900;font-size:4rem;
+  color:rgba(0,74,173,0.06);position:absolute;top:.8rem;right:1.2rem;
+  line-height:1;letter-spacing:-2px;
+}
+.how-dot{
+  width:44px;height:44px;border-radius:50%;background:rgba(0,74,173,0.08);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.2rem;font-size:1.2rem;
+}
+.how-card h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:.75rem;letter-spacing:-.3px}
+.how-card p{font-size:.88rem;color:#666;line-height:1.75}
+
+/* TEAM */
+.team-section{padding:7rem 6%;background:var(--white)}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:4rem}
+.team-card{
+  padding:3rem;border:1.5px solid rgba(0,74,173,0.1);
+  border-radius:4px;position:relative;overflow:hidden;
+}
+.team-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--blue);
+}
+.team-card.red::before{background:var(--red)}
+.team-avatar{
+  width:64px;height:64px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'League Spartan',sans-serif;font-weight:900;font-size:1.4rem;
+  margin-bottom:1.5rem;
+}
+.avatar-blue{background:rgba(0,74,173,0.1);color:var(--blue)}
+.avatar-red{background:rgba(209,46,46,0.1);color:var(--red)}
+.team-name{font-family:'League Spartan',sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-.5px;color:var(--dark);margin-bottom:.3rem}
+.team-role{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:1.2rem}
+.team-bio{font-size:.9rem;color:#555;line-height:1.75}
+.team-tag{
+  display:inline-block;margin-top:1.2rem;padding:.3rem .8rem;
+  background:rgba(0,74,173,0.07);color:var(--blue);
+  font-family:'League Spartan',sans-serif;font-weight:700;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;border-radius:2px;margin-right:.4rem;margin-bottom:.4rem;
+}
+.team-tag.red{background:rgba(209,46,46,0.07);color:var(--red)}
+
+/* COUNTRIES */
+.countries{padding:7rem 6%;background:var(--dark)}
+.countries .section-title{color:var(--white)}
+.countries .section-subtitle{color:rgba(255,255,255,.45)}
+.countries-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  margin-top:4rem;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;
+}
+.country-item{
+  padding:2.5rem 2rem;background:var(--dark);
+  transition:background .3s;
+}
+.country-item:hover{background:#2d1f1a}
+.country-flag{font-size:2.2rem;margin-bottom:.9rem}
+.country-name{
+  font-family:'League Spartan',sans-serif;font-weight:900;
+  font-size:1.25rem;color:var(--white);letter-spacing:-.5px;margin-bottom:.4rem;
+}
+.country-unis{font-size:.75rem;color:rgba(255,255,255,.35);letter-spacing:.05em;text-transform:uppercase;line-height:1.6}
+
+/* DEPOIMENTO REAL */
+.testimony{
+  padding:7rem 6%;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('alexandre-lallemand-Pcs3mOL14Sk-unsplash.jpg') center/cover no-repeat;
+}
+.testimony-inner{max-width:860px;margin:0 auto}
+.testimony-label{
+  font-family:'League Spartan',sans-serif;font-weight:700;font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:2rem;
+  display:block;
+}
+.testimony-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.testimony-card{
+  padding:2.5rem;background:var(--white);border-radius:4px;
+  border:1.5px solid rgba(0,74,173,0.08);position:relative;
+}
+.quote-big{
+  font-family:'League Spartan',sans-serif;font-size:4rem;font-weight:900;
+  color:rgba(0,74,173,.08);line-height:.6;margin-bottom:1.2rem;display:block;
+}
+.testimony-text{font-size:.95rem;color:var(--dark);line-height:1.75;font-style:italic;margin-bottom:1.5rem}
+.testimony-author{
+  display:flex;align-items:center;gap:.8rem;
+}
+.author-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(0,74,173,0.1);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'League Spartan',sans-serif;font-weight:900;font-size:.9rem;
+}
+.author-name{font-family:'League Spartan',sans-serif;font-weight:700;font-size:.85rem;color:var(--dark)}
+.author-info{font-size:.75rem;color:var(--gray)}
+
+/* HIGHLIGHT */
+.highlight-bar{
+  padding:4rem 6%;background:var(--blue);
+  display:flex;align-items:center;gap:4rem;justify-content:center;flex-wrap:wrap;
+}
+.highlight-item{text-align:center}
+.highlight-num{font-family:'League Spartan',sans-serif;font-weight:900;font-size:2.5rem;color:var(--white);letter-spacing:-1.5px}
+.highlight-text{font-size:.78rem;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;margin-top:.3rem}
+
+/* CTA */
+.cta-section{
+  padding:7rem 6%;
+  background:var(--dark);
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:rgba(0,74,173,0.08);pointer-events:none;
+}
+.cta-section h2{
+  font-size:clamp(2.5rem,4.5vw,4rem);font-weight:900;color:var(--white);
+  letter-spacing:-2px;line-height:.95;margin-bottom:1.2rem;position:relative;
+}
+.cta-section h2 span{color:var(--blue)}
+.cta-section p{font-size:1rem;color:rgba(255,255,255,.5);margin-bottom:2.5rem;position:relative}
+.btn-white{
+  background:var(--cream);color:var(--dark);padding:.9rem 2.5rem;
+  font-family:'League Spartan',sans-serif;font-weight:700;font-size:.85rem;
+  letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;
+  border-radius:2px;transition:all .2s;text-decoration:none;display:inline-block;position:relative;
+}
+.btn-white:hover{background:var(--white);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{
+  background:#160e0b;padding:3rem 6%;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{font-family:'League Spartan',sans-serif;font-weight:900;font-size:1.3rem;color:var(--white);text-decoration:none}
+.footer-logo span{color:var(--red)}
+.footer-text{font-size:.78rem;color:rgba(255,255,255,.25)}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding-top:90px}
+  .hero-visual{display:none}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .how-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .countries-grid{grid-template-columns:1fr;}
+  .testimony-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+ #como-funciona .section-tag{color:rgba(255,255,255,0.6);}
+    #como-funciona .section-title{color:var(--white);}
+    #como-funciona .section-subtitle{color:rgba(255,255,255,0.6);}
+
+    .testimony .testimony-label{color:rgba(255,255,255,0.6);}
+
+    .country-name{font-size:1.6rem;}
+.country-unis{color:#ffffff;}
+
+
+.countries-grid{font-size:1.2rem;}
+.country-name{font-size:2rem;}
+.country-unis{font-size:.9rem;}
+.country-item{min-height:260px;padding:2.5rem;}
+
+.country-item{transition:transform .3s ease, box-shadow .3s ease;}
+.country-item:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,0.4);}
+
+.stat-num, .highlight-num{transition:opacity .5s ease;}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Go<span>Europe</span></a>
+  <ul class="nav-links">
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#equipe">Equipe</a></li>
+    <li><a href="#destinos">Destinos</a></li>
+  </ul>
+  <a href="https://wa.me/5543984922202" class="nav-cta">Falar com consultor</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Consultoria educacional · Brasil → Europa</div>
+    <h1>Sua carreira<br>começa na <em>Europa</em><span class="accent">.</span></h1>
+    <p class="hero-sub">Acompanhamos estudantes brasileiros em cada etapa do processo de candidatura a universidades europeias — da estratégia até a aprovação.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5543984922202" class="btn-primary">Começar agora</a>
+      <a href="#como-funciona" class="btn-primary">Como funciona</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hv-main">
+      <div class="hv-city">GoEurope</div>
+      <div class="hv-uni">Por · Gustavo Neves Machado </div>
+    </div>
+    <div class="hv-badge-red">
+      <div class="hv-city">Estude nas</div>
+      <div class="hv-uni">Melhores universidades do mundoi</div>
+    </div>
+    <div class="hv-badge-cream">
+      <div class="badge-num">+800</div>
+      <div class="badge-label">universidades parceiras</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Anos de experiência</div></div>
+  <div class="stat-item"><div class="stat-num">800+</div><div class="stat-label">Universidades Triple Crown</div></div>
+  <div class="stat-item"><div class="stat-num">Top 1%</div><div class="stat-label">Das instituições no mundo</div></div>
+  <div class="stat-item"><div class="stat-num">1:1</div><div class="stat-label">Consultoria dedicada</div></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="como-funciona">
+  <span class="section-tag">Como funciona</span>
+  <h2 class="section-title">Do sonho à aprovação,<br>passo a passo.</h2>
+  <p class="section-subtitle">Um processo claro e estruturado, com suporte humano em cada etapa.</p>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-dot">🎯</div>
+      <h3>Diagnóstico e estratégia</h3>
+      <p>Entendemos seus objetivos, histórico acadêmico e perfil para montar uma seleção estratégica de universidades com alto potencial de aprovação.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-dot">📋</div>
+      <h3>Execução da candidatura</h3>
+      <p>Apoio completo na preparação de documentos, revisão de essays, organização de prazos e envio das candidaturas com atenção a cada detalhe.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-dot">✈️</div>
+      <h3>Suporte até a aprovação</h3>
+      <p>Acompanhamento contínuo durante todo o processo — das respostas das universidades até a preparação para a vida na Europa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="equipe">
+  <span class="section-tag">Nossa equipe</span>
+  <h2 class="section-title">Quem está do<br>seu lado.</h2>
+  <p class="section-subtitle">Experiência real, vivida na Europa. Não orientação teórica.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar avatar-blue" style="padding:0;overflow:hidden;">
+  <img src="FOTO GUSTAVO.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+</div>
+      <div class="team-name">Gustavo Neves</div>
+      <div class="team-role">Fundador · Estratégia e Relacionamento</div>
+      <p class="team-bio">Estudante brasileiro vivendo na Europa. Cursou Business na Burgundy School of Business (Dijon, França) e está em transferência para Data Science na TUM Munich. Conquistou mais de R$ 14.000 em descontos na própria candidatura — e usa esse método com cada cliente da Go Europe.</p>
+      <div>
+        <span class="team-tag">BSB Dijon</span>
+        <span class="team-tag">TUM Munich</span>
+        <span class="team-tag">Data Science</span>
+      </div>
+    </div>
+    <div class="team-card red">
+      <div class="team-avatar avatar-red">JA</div>
+      <div class="team-name">Jackie</div>
+      <div class="team-role">Sócia · Especialista em Documentação e Admissões</div>
+      <p class="team-bio">Sócia da Go Europe e especialista em admissões internacionais com mais de 15 anos de experiência. Já encaminhou mais de 100 alunos a estudar em universidades fora do Brasil. Possui um networking sólido com instituições europeias e domina todo o processo de documentação — de históricos escolares a cartas de motivação. É ela quem conduz a consultoria técnica com cada aluno.</p>
+      <div>
+        <span class="team-tag red">+15 anos</span>
+        <span class="team-tag red">Documentação</span>
+        <span class="team-tag red">Networking Europa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section class="countries" id="destinos">
+  <span class="section-tag" style="color:rgba(255,255,255,.35)">Destinos</span>
+  <h2 class="section-title">Onde você quer<br>estudar?</h2>
+  <p class="section-subtitle">Atuamos nos principais polos universitários europeus, com conhecimento direto de cada sistema de admissão.</p>
+  <div style="display:inline-flex;align-items:center;gap:.8rem;margin-top:1.5rem;padding:1rem 1.5rem;border:1.5px solid rgba(255,255,255,.12);border-radius:4px;background:rgba(255,255,255,.04)">
+    <span style="font-size:1.4rem">🏆</span>
+    <div>
+      <div style="font-family:'League Spartan',sans-serif;font-weight:900;font-size:.85rem;color:var(--white);letter-spacing:.05em;text-transform:uppercase">Apenas universidades Triple Crown</div>
+      <div style="font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.2rem">AACSB · EQUIS · AMBA — top 1% das instituições no mundo</div>
+    </div>
+  </div>
+  <div class="countries-grid">
+<div class="country-item" style="background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('ALEMANHA.jpg') center/cover no-repeat;">
+  <div class="country-flag"></div>
+  <div class="country-name">Alemanha</div>
+  <div class="country-unis">TU Munich · LMU · KIT · RWTH Aachen · Heidelberg · Humboldt</div>
+</div>
+<div class="country-item" style="background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('FRANCA.jpg') center/cover no-repeat;">
+  <div class="country-flag"></div>
+  <div class="country-name">França</div>
+  <div class="country-unis">Sorbonne · Sciences Po · BSB · HEC Paris · ESSEC · CentraleSupélec</div>
+</div>
+<div class="country-item" style="background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('ESPANHA.jpg') center/cover no-repeat;">
+  <div class="country-flag"></div>
+  <div class="country-name">Espanha</div>
+  <div class="country-unis">IE · ESADE · Complutense · UAB · Carlos III · IESE</div>
+</div>
+<div class="country-item" style="background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('HOLANDA.jpg') center/cover no-repeat;">
+  <div class="country-flag"></div>
+  <div class="country-name">Holanda</div>
+  <div class="country-unis">Delft · Amsterdam · Leiden · Erasmus · Utrecht · Groningen</div>
+</div>
+<div class="country-item" style="background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('ITALIA.jpg') center/cover no-repeat;">
+  <div class="country-flag"></div>
+  <div class="country-name">Itália</div>
+  <div class="country-unis">Bocconi · Politecnico · Bologna · La Sapienza · Turin · Padova</div>
+</div>
+<div class="country-item" style="background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('REINO UNIDO.jpg') center/cover no-repeat;">
+  <div class="country-flag"></div>
+  <div class="country-name">Reino Unido</div>
+  <div class="country-unis">LSE · UCL · Edinburgh · Manchester · King's College · Warwick</div>
+</div>
+</section>
+
+<!-- DEPOIMENTO REAL -->
+<section class="testimony">
+  <div class="testimony-inner">
+    <span class="testimony-label">Experiência real</span>
+    <div class="testimony-grid">
+      <div class="testimony-card">
+        <span class="quote-big">"</span>
+        <p class="testimony-text">Consegui mais de R$ 14.000 de desconto na minha candidatura à Burgundy School of Business, na França. Esse método que desenvolvi é o que aplico com cada aluno da Go Europe.</p>
+        <div class="testimony-author">
+          <div class="team-avatar avatar-blue" style="padding:0;overflow:hidden;">
+  <img src="FOTO GUSTAVO.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+</div>
+          <div>
+            <div class="author-name">Gustavo Neves</div>
+            <div class="author-info">Fundador · BSB Dijon → TUM Munich</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimony-card">
+        <span class="quote-big">"</span>
+        <p class="testimony-text">Em 15 anos trabalhando com admissões internacionais e mais de 100 alunos encaminhados a estudar fora do Brasil, vi que o maior obstáculo dos estudantes não é o mérito — é a falta de orientação no momento certo. A Go Europe resolve exatamente isso.</p>
+        <div class="testimony-author">
+          <div class="author-avatar" style="background:rgba(209,46,46,0.1);color:var(--red)">JA</div>
+          <div>
+            <div class="author-name">Jackie</div>
+            <div class="author-info">Especialista · +15 anos em admissões europeias</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="highlight-bar">
+  <div class="highlight-item"><div class="highlight-num">R$ 14K+</div><div class="highlight-text">em desconto conquistado pelo fundador</div></div>
+  <div class="highlight-item"><div class="highlight-num">15 anos</div><div class="highlight-text">de expertise em admissões</div></div>
+  <div class="highlight-item"><div class="highlight-num">800+</div><div class="highlight-text">universidades no radar</div></div>
+  <div class="highlight-item"><div class="highlight-num">12+</div><div class="highlight-text">países europeus</div></div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Pronto para estudar<br>na <span>Europa</span>?</h2>
+  <p>Converse com nossa equipe e descubra qual universidade combina com o seu perfil.</p>
+  <a href="https://wa.me/5543984922202" class="btn-white">Falar pelo WhatsApp</a>
+</section>
+
+<footer>
+  <a href="#" class="footer-logo">Go<span>Europe</span></a>
+  <div class="footer-text">© 2025 Go Europe · Consultoria Educacional · contato@goeurope.com.br</div>
+</footer>
+
+<script>
+const counters = document.querySelectorAll('.stat-num, .highlight-num');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting && !entry.target.dataset.counted){
+      entry.target.dataset.counted = true;
+      const original = entry.target.innerText;
+      const num = parseFloat(original.replace(/[^0-9.]/g,''));
+      if(!num || original.includes('K') || original.includes('anos') || original.includes(':') || original.includes('1%')){return;}
+      const hasPlus = original.includes('+');
+      const hasPercent = original.includes('%');
+      let start = 0;
+      const duration = 1500;
+      const step = 16;
+      const increment = num / (duration / step);
+      const timer = setInterval(() => {
+        start += increment;
+        if(start >= num){start = num; clearInterval(timer);}
+        entry.target.innerText = Math.floor(start) + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
+      }, step);
+    }
+  });
+}, {threshold: 0.5});
+counters.forEach(c => observer.observe(c));
+
+</script>
+
+</body>
+</html>
